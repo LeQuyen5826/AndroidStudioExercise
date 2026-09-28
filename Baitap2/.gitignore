@@ -1,0 +1,19 @@
+# Thư viện (cài lại bằng npm install)
+node_modules/
+
+# Cache và file build của Expo
+.expo/
+dist/
+web-build/
+
+# Biến môi trường, không đẩy lên GitHub
+.env
+.env*.local
+
+# Log
+npm-debug.*
+*.log
+
+# File rác của hệ điều hành
+.DS_Store
+Thumbs.db
