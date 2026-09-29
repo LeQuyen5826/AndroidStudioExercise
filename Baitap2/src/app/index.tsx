@@ -1,7 +1,41 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
+  const [showBaitap2, setShowBaitap2] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [studentId, setStudentId] = useState("");
+
+  if (showBaitap2) {
+    return (
+      <SafeAreaView style={styles.baitap2Screen}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => setShowBaitap2(false)}
+          activeOpacity={0.6}
+        >
+          <Image
+            source={require("../../assets/images/arrow.png")}
+            style={styles.backIcon}
+          />
+        </TouchableOpacity>
+        <View style={styles.studentInfoDisplay}>
+          <Text style={styles.baitap2Text}>Thông tin sinh viên</Text>
+          <Text style={styles.infoText}>Full Name: {fullName || "—"}</Text>
+          <Text style={styles.infoText}>Student ID: {studentId || "—"}</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.phone}>
@@ -30,8 +64,30 @@ export default function Index() {
             <Text style={styles.text}>6</Text>
           </View>
         </View>
+        <View style={styles.studentInfo}>
+          <Text style={styles.sectionTitle}>Nhập thông tin sinh viên</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Full name"
+            placeholderTextColor="#999"
+            value={fullName}
+            onChangeText={setFullName}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Student ID"
+            placeholderTextColor="#999"
+            value={studentId}
+            onChangeText={setStudentId}
+          />
+        </View>
 
-        <Text style={styles.footerText}>Lê Đình Đức Quyền - BIT240201</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setShowBaitap2(true)}
+        >
+          <Text style={styles.buttonText}>Click Me</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -39,6 +95,46 @@ export default function Index() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
+  baitap2Screen: {
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  backButton: {
+    position: "absolute",
+    top: 12,
+    left: 14,
+    padding: 8,
+  },
+  backIcon: {
+    width: 22,
+    height: 22,
+    resizeMode: "contain",
+  },
+  baitap2Text: {
+    color: "#000",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 12,
+  },
+  studentInfoDisplay: { alignItems: "center", gap: 8 },
+  infoText: { color: "#333", fontSize: 18 },
+  studentInfo: { paddingHorizontal: 14, paddingBottom: 12, gap: 8 },
+  sectionTitle: {
+    color: "#000",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#bbb",
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 9,
+    color: "#000",
+  },
   phone: {
     flex: 1,
     width: "100%",
@@ -60,12 +156,15 @@ const styles = StyleSheet.create({
   green: { backgroundColor: "#31a05a" },
   purple: { backgroundColor: "#7b2fdb" },
   orange: { backgroundColor: "#f5820a" },
+  button: {
+    alignSelf: "center",
+    backgroundColor: "#2f7bf0",
+    borderRadius: 8,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    marginBottom: 10,
+  },
+  buttonText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
   text: { color: "#fff", fontSize: 24, fontWeight: "bold" },
   textDark: { color: "#000", fontSize: 24, fontWeight: "bold" },
-  footerText: {
-    textAlign: "center",
-    fontSize: 13,
-    color: "#333",
-    paddingBottom: 16,
-  },
 });
