@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Quản lý sinh viên",
+    "slug": "my-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "myapp",
+    "userInterfaceStyle": "light",
+    "locales": {
+      "vi": "./locales/app-vi.json",
+      "en": "./locales/app-en.json"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Ứng dụng cần truy cập thư viện ảnh để chọn ảnh đại diện."
+        }
+      ]
+    ]
+  }
+}

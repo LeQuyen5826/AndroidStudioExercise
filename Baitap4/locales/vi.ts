@@ -1,0 +1,36 @@
+import type en from "./en";
+
+const vi: typeof en = {
+  appName: "Quản lý sinh viên",
+  info: "Thông tin sinh viên",
+  add: "Thêm",
+  save: "Lưu",
+  edit: "Sửa",
+  delete: "Xóa",
+  yes: "Có",
+  no: "Không",
+  ok: "OK",
+  settings: "Cài đặt",
+  language: "Ngôn ngữ",
+  langAuto: "Theo thiết bị",
+  fullName: "Họ và tên",
+  studentId: "Mã số SV",
+  email: "Email",
+  avatar: "Ảnh đại diện",
+  avatarUrl: "Link ảnh (https://...)",
+  pickImage: "Chọn ảnh từ thiết bị",
+  addStudent: "Thêm sinh viên",
+  editStudent: "Sửa sinh viên",
+  emptyList: 'Chưa có sinh viên nào. Nhấn "Thêm" để tạo mới.',
+  confirm: "Xác nhận",
+  confirmEdit: "Bạn có muốn sửa thông tin SV không?",
+  confirmDelete: "Bạn có muốn xóa thông tin SV không?",
+  errRequired: "Vui lòng nhập {field}.",
+  errEmail: "Email không hợp lệ.",
+  errDuplicate: "Mã số SV đã tồn tại.",
+  errPermission: "Chưa được cấp quyền truy cập thư viện ảnh.",
+  errSave: "Không thể lưu dữ liệu. Vui lòng thử lại.",
+  notFound: "Không tìm thấy sinh viên.",
+};
+
+export default vi;

@@ -1,0 +1,4 @@
+{
+  "CFBundleDisplayName": "Student Management",
+  "NSPhotoLibraryUsageDescription": "The app needs access to your photo library to choose a student avatar."
+}
