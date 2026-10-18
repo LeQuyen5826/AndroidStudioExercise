@@ -1,56 +1,100 @@
-# Welcome to your Expo app 👋
+# Link video thuyết trình:
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+---
 
-## Get started
+# Ứng dụng Quản lý khóa học (Course Management)
 
-1. Install dependencies
+Ứng dụng di động quản lý khóa học trực tuyến, xây dựng bằng **React Native (Expo) + TypeScript**, dùng **MockAPI** làm backend REST.
 
-   ```bash
-   npm install
-   ```
+## Chức năng
 
-2. Start the app
+- **Danh sách khóa học:** hiển thị ảnh bìa, tên, giảng viên, danh mục, học phí; tìm kiếm theo tên; lọc theo danh mục.
+- **Chi tiết khóa học:** xem đầy đủ thông tin, tên danh mục lấy từ API, xem trailer, sửa và xóa khóa học.
+- **Thêm / sửa khóa học:** một form dùng chung, có kiểm tra dữ liệu (học phí, thời lượng, URL ảnh và trailer, danh mục).
+- **Quản lý danh mục:** thêm, sửa, xóa; không cho xóa danh mục đang có khóa học.
+- **Xử lý trạng thái:** hiển thị loading, thông báo lỗi kèm nút "Thử lại", và thông báo khi danh sách rỗng.
 
-   ```bash
-   npx expo start
-   ```
+## Công nghệ
 
-In the output, you'll find options to open the app in a
+- React Native, Expo, Expo Router
+- TypeScript
+- `expo-video` (phát trailer), `@react-native-picker/picker` (chọn danh mục)
+- MockAPI (REST API)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Link MockAPI
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+https://6ace45d2f338359cf1c35f99.mockapi.io/api/v1
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+| Resource | Đường dẫn |
+|---|---|
+| Danh mục | `/categories` |
+| Khóa học | `/courses` |
 
-### Other setup steps
+## Hướng dẫn chạy ứng dụng
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+### Yêu cầu
 
-## Learn more
+- Node.js 18 trở lên
+- Ứng dụng **Expo Go** trên điện thoại (hoặc Android emulator)
+- Điện thoại và máy tính dùng chung một mạng Wi-Fi
 
-To learn more about developing your project with Expo, look at the following resources:
+### Các bước
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. Mở terminal tại thư mục `Baitap5`:
 
-## Join the community
+```bash
+   cd Baitap5
+```
 
-Join our community of developers creating universal apps.
+2. Cài thư viện:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+   npm install
+```
+
+3. Chạy ứng dụng:
+
+```bash
+   npx expo start
+```
+
+4. Mở app:
+   - Quét mã QR bằng **Expo Go** trên điện thoại, hoặc
+   - Nhấn phím `a` trong terminal để mở trên Android emulator.
+
+### Đổi đường dẫn MockAPI (nếu dùng project MockAPI khác)
+
+Mở file `src/api.ts` và sửa hằng số `BASE_URL`:
+
+```ts
+export const BASE_URL = 'https://<ma-project-cua-ban>.mockapi.io/api/v1';
+```
+
+## Cấu trúc thư mục
+
+```
+src/
+  app/
+    _layout.tsx        # Stack navigator
+    index.tsx          # Danh sách khóa học
+    categories.tsx     # Quản lý danh mục
+    course/
+      [id].tsx         # Chi tiết khóa học
+      form.tsx         # Thêm / sửa khóa học
+  api.ts               # Gọi REST API (hàm request dùng chung)
+  types.ts             # Kiểu dữ liệu Course, Category
+  components/State.tsx # Loading / lỗi / danh sách rỗng
+```
+
+## Cấu trúc dữ liệu
+
+**categories:** `id`, `name`, `description`
+
+**courses:** `id`, `title`, `description`, `categoryId`, `instructor`, `price` (số), `duration` (số, giờ), `thumbnail`, `trailerUrl`, `createdAt`
+
+## Lưu ý khi chạy
+
+- Cần kết nối Internet để gọi MockAPI và tải ảnh, video.
+- Trailer phải là link file `.mp4` trực tiếp (không dùng link trang YouTube).
