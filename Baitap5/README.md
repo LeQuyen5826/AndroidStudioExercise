@@ -42,10 +42,10 @@ https://6ace45d2f338359cf1c35f99.mockapi.io/api/v1
 
 ### Các bước
 
-1. Mở terminal tại thư mục `Baitap5`:
+1. Mở terminal tại thư mục của bạn:
 
 ```bash
-   cd Baitap5
+   cd + tên thư mục 
 ```
 
 2. Cài thư viện:
