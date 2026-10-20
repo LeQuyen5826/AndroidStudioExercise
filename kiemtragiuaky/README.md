@@ -1,3 +1,5 @@
+#LINK VIDEO:
+https://www.image2url.com/r2/default/videos/1792496396478-ebeb9cff-320a-4fea-96a8-1de62d68a351.mp4
 # BIT240201_FoodManager
 
 Bài kiểm tra giữa kỳ môn **Phát triển ứng dụng di động** - Đề tài **Quản lý món ăn**.
